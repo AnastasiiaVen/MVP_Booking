@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.idea",
+    "\\target",
+    "\\target\\classes",
+    "\\target\\classes\\ru",
+    "\\target\\classes\\ru\\geekbrains",
+    "\\target\\classes\\ru\\geekbrains\\lesson8",
+    "\\target\\classes\\ru\\geekbrains\\lesson8\\MVP",
+    "\\target\\classes\\ru\\geekbrains\\lesson8\\MVP\\models",
+    "\\target\\generated-sources",
+    "\\target\\generated-sources\\annotations"
+  ],
+  "SelectedNode": "\\src\\main\\java\\ru\\geekbrains\\lesson8\\Sample01.java",
+  "PreviewInSolutionExplorer": false
+}
