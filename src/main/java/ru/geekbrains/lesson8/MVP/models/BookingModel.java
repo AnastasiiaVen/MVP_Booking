@@ -46,17 +46,18 @@ public class BookingModel implements Model {
     }
 
     public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
-        System.out.println(tables);
-        for (Table table: tables) {
-            Optional<Reservation> reservation = table.getReservations().stream().filter(r -> r.getId() == oldReservation).findFirst();
-            System.out.println(reservation);
-            if (reservation.isPresent()){
-                System.out.println(table.getReservations());
-                table.getReservations().remove(oldReservation); //TODO: не срабатывает удаление
-                System.out.println(table.getReservations());
-                reservationTable(reservationDate, tableNo, name);
+        Optional<Table> tableForChange = loadTables().stream().filter(t -> t.getReservations().removeIf(r -> r.getId() == oldReservation)).findFirst();
+        if(tableForChange.isPresent()) {
+            Optional<Table> table = loadTables().stream().filter(t -> t.getNo() == tableNo).findFirst();
+            if (table.isPresent()){
+                Reservation reservation = new Reservation(reservationDate, name);
+                table.get().getReservations().add(reservation);
+                return reservation.getId();
             }
+
+            throw new RuntimeException("Некорректный номер столика.");
         }
+
         throw new RuntimeException("Некорректный номер бронирования.");
     }
 

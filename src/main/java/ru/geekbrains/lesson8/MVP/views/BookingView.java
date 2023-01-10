@@ -44,12 +44,17 @@ public class BookingView implements View {
      * @param tableNo
      * @param name
      */
-    public void  changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
         observer.onChangeReservationTable(oldReservation, reservationDate, tableNo, name);
     }
 
     public void printReservationTableResult(int reservationNo){
         System.out.printf("Столик успешно забронирован. Номер вашей брони #%d\n", reservationNo);
+    }
+
+    @Override
+    public void printChangeReservationTableResult(int reservationNo){
+        System.out.printf("Изменения прошли успешно. Новый номер вашей брони #%d\n", reservationNo);
     }
 
 

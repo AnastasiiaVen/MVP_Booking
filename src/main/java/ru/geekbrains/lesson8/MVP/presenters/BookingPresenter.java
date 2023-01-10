@@ -20,19 +20,23 @@ public class BookingPresenter implements ViewObserver {
     /**
      * Получить список всех столиков
      */
-    public void loadTables(){
+    public void loadTables() {
         tables = model.loadTables();
     }
 
     /**
      * Отобразить список столиков
      */
-    public void updateView(){
+    public void updateView() {
         view.showTables(tables);
     }
 
-    protected void printReservationTableResult(int reservationNo){
+    protected void printReservationTableResult(int reservationNo) {
         view.printReservationTableResult(reservationNo);
+    }
+
+    protected void printChangeReservationTableResult(int reservationNo) {
+        view.printChangeReservationTableResult(reservationNo);
     }
 
     @Override
@@ -44,6 +48,6 @@ public class BookingPresenter implements ViewObserver {
     @Override
     public void onChangeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
         int newReservationNo = model.changeReservationTable(oldReservation, reservationDate, tableNo, name);
-        printReservationTableResult(newReservationNo);
+        printChangeReservationTableResult(newReservationNo);
     }
 }
